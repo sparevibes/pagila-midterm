@@ -6,8 +6,7 @@
 
 SELECT DISTINCT
    first_name,
-   last_name,
-   actor_id
+   last_name
 FROM actor
 JOIN film_actor USING (actor_id)
 JOIN film USING (film_id)
@@ -26,6 +25,3 @@ AND actor_id NOT IN (
    WHERE
        category.name IN ('Horror')
    )
-GROUP BY actor_id
-
-

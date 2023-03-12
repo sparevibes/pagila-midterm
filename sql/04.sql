@@ -8,14 +8,14 @@
 
 
 SELECT
-   f1.title
-FROM film f1
-JOIN film_actor fa1 ON f1.film_id = fa1.film_id
-JOIN film_actor fa2 ON fa2.actor_id = fa1.actor_id
-JOIN film f2 ON f2.film_id = fa2.film_id
-WHERE f2.title = 'AMERICAN CIRCUS'
- AND f1.title != 'AMERICAN CIRCUS'
-GROUP BY f1.title
+   film.title
+FROM film
+JOIN film_actor fa ON film.film_id = fa.film_id
+JOIN film_actor fa2 ON fa2.actor_id = fa.actor_id
+JOIN film film2 ON film2.film_id = fa2.film_id
+WHERE film2.title = 'AMERICAN CIRCUS'
+ AND film.title != 'AMERICAN CIRCUS'
+GROUP BY film.title
 HAVING
    count(*)>2
-ORDER BY f1.title
+ORDER BY film.title
